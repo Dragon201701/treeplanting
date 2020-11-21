@@ -14,6 +14,11 @@ import { connect, useIntl, FormattedMessage } from 'umi';
 import { getFakeCaptcha } from '@/services/login';
 import styles from './index.less';
 
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+
+
 const LoginMessage = ({ content }) => (
   <Alert
     style={{
