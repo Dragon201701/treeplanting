@@ -54,6 +54,7 @@
     "antd": "^4.8.0",
     "classnames": "^2.2.6",
     "firebase": "^8.1.1",
+    "firebaseui": "^4.7.1",
     "lodash": "^4.17.11",
     "moment": "^2.25.3",
     "omit.js": "^2.0.2",

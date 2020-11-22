@@ -1,13 +1,27 @@
-import { stringify } from 'querystring';
 import { history } from 'umi';
-import { AccountLogin } from '../services/login';
-import { setAuthority } from '@/utils/authority';
-import { getPageQuery } from '@/utils/utils';
 import { message } from 'antd';
+import { parse } from 'qs';
+import { AccountLogin, getFakeCaptcha } from './service';
+export function getPageQuery() {
+  return parse(window.location.href.split('?')[1]);
+}
+export function setAuthority(authority) {
+  const proAuthority = typeof authority === 'string' ? [authority] : authority;
+  localStorage.setItem('antd-pro-authority', JSON.stringify(proAuthority)); // hard code
+  // reload Authorized component
 
-// Not used.
+  try {
+    if (window.reloadAuthorized) {
+      window.reloadAuthorized();
+    }
+  } catch (error) {
+    // do not need do anything
+  }
+
+  return authority;
+}
 const Model = {
-  namespace: 'login',
+  namespace: 'userAndlogin',
   state: {
     status: undefined,
   },
@@ -15,15 +29,16 @@ const Model = {
     *login({ payload }, { call, put }) {
       console.log('Login calling AccountLogin with payload: ', payload)
       const response = yield call(AccountLogin, payload);
+      console.log('AccountLogin returned with: ', response)
       yield put({
         type: 'changeLoginStatus',
         payload: response,
       }); // Login successfully
 
       if (response.status === 'ok') {
+        message.success('登录成功！');
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
-        message.success('🎉 🎉 🎉  登录成功！');
         let { redirect } = params;
 
         if (redirect) {
@@ -36,7 +51,7 @@ const Model = {
               redirect = redirect.substr(redirect.indexOf('#') + 1);
             }
           } else {
-            window.location.href = '/';
+            window.location.href = redirect;
             return;
           }
         }
@@ -45,17 +60,8 @@ const Model = {
       }
     },
 
-    logout() {
-      const { redirect } = getPageQuery(); // Note: There may be security issues, please note
-
-      if (window.location.pathname !== '/user/login' && !redirect) {
-        history.replace({
-          pathname: '/user/login',
-          search: stringify({
-            redirect: window.location.href,
-          }),
-        });
-      }
+    *getCaptcha({ payload }, { call }) {
+      yield call(getFakeCaptcha, payload);
     },
   },
   reducers: {

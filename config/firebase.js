@@ -1,4 +1,6 @@
-
+import firebase from 'firebase'
+//require('firebase/auth')
+//require('firebase/firestore');
 var firebaseConfig = {
     apiKey: "AIzaSyDF5QxBeM9PgfeGWvW1duLtSXbYXni9akE",
     authDomain: "treeplanting-4254e.firebaseapp.com",
@@ -10,5 +12,5 @@ var firebaseConfig = {
     measurementId: "G-2CLNNFB61E"
 };
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+//firebase.analytics();
 export default firebaseConfig;
