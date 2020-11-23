@@ -4,7 +4,7 @@ function getFakeCaptcha(req, res) {
 }
 
 export default {
-  'POST  /api/login/account': (req, res) => {
+  /*'POST  /api/login/account': (req, res) => {
     const { password, userName, type } = req.body;
 
     if (password === 'ant.design' && userName === 'admin') {
@@ -40,5 +40,5 @@ export default {
       currentAuthority: 'guest',
     });
   },
-  'GET  /api/login/captcha': getFakeCaptcha,
+  'GET  /api/login/captcha': getFakeCaptcha,*/
 };

@@ -1,6 +1,7 @@
 import firebase from 'firebase'
 //require('firebase/auth')
 //require('firebase/firestore');
+
 var firebaseConfig = {
     apiKey: "AIzaSyDF5QxBeM9PgfeGWvW1duLtSXbYXni9akE",
     authDomain: "treeplanting-4254e.firebaseapp.com",

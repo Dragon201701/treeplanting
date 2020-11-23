@@ -40,7 +40,7 @@ const Model = {
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;
-
+        console.log('登录成功。Redirect to: ', redirect)
         if (redirect) {
           const redirectUrlParams = new URL(redirect);
 

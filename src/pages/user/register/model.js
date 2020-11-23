@@ -1,4 +1,4 @@
-import { fakeRegister } from './service';
+import { fakeRegister, Register } from './service';
 const Model = {
   namespace: 'userAndregister',
   state: {
@@ -6,7 +6,8 @@ const Model = {
   },
   effects: {
     *submit({ payload }, { call, put }) {
-      const response = yield call(fakeRegister, payload);
+      console.log('Register with: ', payload)
+      const response = yield call(Register, payload);
       yield put({
         type: 'registerHandle',
         payload: response,
