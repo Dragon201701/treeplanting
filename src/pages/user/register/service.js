@@ -22,7 +22,26 @@ export async function Register(params){
     currentAuthority = 'user'
   });
   const ret = await registerPromise
-  console.log('Complete firebase Register. ret:', ret)
+  console.log('Complete firebase Register. ret:', ret, ' Start sending emial verification.')
+  var actionCodeSettings = {
+    // URL you want to redirect back to. The domain (www.example.com) for this
+    // URL must be in the authorized domains list in the Firebase Console.
+    url: 'https://treeplanting-4254e.firebaseapp.com/welcome',
+    // This must be true.
+    handleCodeInApp: true,
+  };
+  firebase.auth().sendSignInLinkToEmail(params.mail, actionCodeSettings)
+  .then(function() {
+    // The link was successfully sent. Inform the user.
+    // Save the email locally so you don't need to ask the user for it again
+    // if they open the link on the same device.
+    console.log('Signin link successfully sent.')
+    window.localStorage.setItem('emailForSignIn', email);
+  })
+  .catch(function(error) {
+    // Some error occurred, you can inspect the code: error.code
+    console.log('Send Signinlink to email ERROR: ', error)
+  });
   return ({
     status: status,
     currentAuthority: currentAuthority,
