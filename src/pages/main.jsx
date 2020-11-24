@@ -2,7 +2,7 @@ import React from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import { Card, Alert, Typography } from 'antd';
 import { useIntl, FormattedMessage } from 'umi';
-import styles from './Welcome.less';
+import styles from './main.less';
 
 const CodePreview = ({ children }) => (
   <pre className={styles.pre}>
@@ -14,7 +14,6 @@ const CodePreview = ({ children }) => (
 
 export default () => {
   const intl = useIntl();
-  console.log("Landing page.")
   return (
     <PageContainer>
       <Card>

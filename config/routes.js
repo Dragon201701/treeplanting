@@ -18,8 +18,26 @@ export default [
         path: '/user/register-result',
         component: './user/register-result'
       },
+      {
+        component: '404',
+      },
     ],
   },
+  /*{
+    path: '/',
+    component: '../layouts/BlankLayout',
+    routes: [
+      {
+        path: '/',
+        redirect: './main',
+      },
+      {
+        path: '/main',
+        name: 'main',
+        component: './main',
+      }
+    ]
+  },*/
   {
     path: '/',
     component: '../layouts/SecurityLayout',
@@ -31,13 +49,13 @@ export default [
         routes: [
           {
             path: '/',
-            redirect: '/welcome',
+            redirect: '/main',
           },
           {
-            path: '/welcome',
-            name: 'welcome',
+            path: '/main',
+            name: 'main',
             icon: 'smile',
-            component: './Welcome',
+            component: './main',
           },
           {
             path: '/admin',
@@ -50,7 +68,7 @@ export default [
                 path: '/admin/sub-page',
                 name: 'sub-page',
                 icon: 'smile',
-                component: './Welcome',
+                component: './main',
                 authority: ['admin'],
               },
             ],

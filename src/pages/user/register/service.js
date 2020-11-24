@@ -36,7 +36,7 @@ export async function Register(params){
     // Save the email locally so you don't need to ask the user for it again
     // if they open the link on the same device.
     console.log('Signin link successfully sent.')
-    window.localStorage.setItem('emailForSignIn', email);
+    window.localStorage.setItem('emailForSignIn', params.mail);
   })
   .catch(function(error) {
     // Some error occurred, you can inspect the code: error.code
