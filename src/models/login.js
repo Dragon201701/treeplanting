@@ -25,6 +25,7 @@ const Model = {
         const params = getPageQuery();
         message.success('🎉 🎉 🎉  登录成功！');
         let { redirect } = params;
+        console.log('login.js redirect to: ', redirect)
         if (redirect) {
           const redirectUrlParams = new URL(redirect);
 

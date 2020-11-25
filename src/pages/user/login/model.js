@@ -40,8 +40,11 @@ const Model = {
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;
-        console.log('登录成功。Redirect to: ', redirect)
+        //redirect = redirect + 'main'
+        
+        
         if (redirect) {
+          console.log('登录成功。Redirect to: ', redirect)
           const redirectUrlParams = new URL(redirect);
 
           if (redirectUrlParams.origin === urlParams.origin) {

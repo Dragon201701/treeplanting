@@ -29,12 +29,12 @@ export default [
     routes: [
       {
         path: '/',
-        redirect: './main',
+        redirect: './welcome',
       },
       {
-        path: '/main',
-        name: 'main',
-        component: './main',
+        path: '/welcome',
+        name: 'welcome',
+        component: './welcome',
       }
     ]
   },*/
