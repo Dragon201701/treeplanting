@@ -16,12 +16,27 @@ export default [
       {
         name: 'register-result',
         path: '/user/register-result',
-        component: './user/register-result'
+        component: './user/register-result',
       },
       {
         component: '404',
       },
     ],
+  },
+  {
+    path: '/welcome',
+    component: '../layouts/BlankLayout',
+    routes: [
+      {
+        path: '/',
+        redirect: './welcome',
+      },
+      {
+        path: '/welcome',
+        name: 'welcome',
+        component: './welcome',
+      }
+    ]
   },
   /*{
     path: '/',
