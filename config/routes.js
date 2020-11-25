@@ -1,5 +1,16 @@
 export default [
   {
+    path: '/welcome',
+    component: '../layouts/BlankLayout',
+    routes: [
+      {
+        path: '/welcome',
+        name: 'welcome',
+        component: './welcome',
+      }
+    ]
+  },
+  {
     path: '/user',
     component: '../layouts/UserLayout',
     routes: [
@@ -23,21 +34,7 @@ export default [
       },
     ],
   },
-  {
-    path: '/welcome',
-    component: '../layouts/BlankLayout',
-    routes: [
-      {
-        path: '/',
-        redirect: './welcome',
-      },
-      {
-        path: '/welcome',
-        name: 'welcome',
-        component: './welcome',
-      }
-    ]
-  },
+
   /*{
     path: '/',
     component: '../layouts/BlankLayout',
