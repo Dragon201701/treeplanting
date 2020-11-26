@@ -81,7 +81,7 @@ const TableList = () => {
   const [selectedRowsState, setSelectedRows] = useState([]);
   const columns = [
     {
-      title: '规则名称',
+      title: '树名',
       dataIndex: 'name',
       tip: '规则名称是唯一的 key',
       formItemProps: {

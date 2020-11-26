@@ -1,5 +1,5 @@
 export default {
-  'menu.main': 'Selamat Datang',
+  'menu.main': '可视化植树界面',
   'menu.more-blocks': 'Blocks Lainnya',
   'menu.home': 'Halaman Awal',
   'menu.admin': 'Admin',
@@ -22,7 +22,7 @@ export default {
   'menu.form.step-form.result': 'Form Bertahap(selesai)',
   'menu.form.advanced-form': 'Form Lanjutan',
   'menu.list': 'Daftar',
-  'menu.list.table-list': 'Tabel Pencarian',
+  'menu.list.table-list': '树苗列表',
   'menu.list.basic-list': 'Daftar Dasar',
   'menu.list.card-list': 'Daftar Kartu',
   'menu.list.search-list': 'Daftar Pencarian',

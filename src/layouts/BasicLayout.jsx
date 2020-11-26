@@ -1,5 +1,5 @@
 /**
- * Ant Design Pro v4 use `@ant-design/pro-layout` to handle Layout.
+ * 留学梭梭 v4 use `@ant-design/pro-layout` to handle Layout.
  * You can view component api by:
  * https://github.com/ant-design/ant-design-pro-layout
  */
@@ -11,7 +11,7 @@ import { Result, Button } from 'antd';
 import Authorized from '@/utils/Authorized';
 import RightContent from '@/components/GlobalHeader/RightContent';
 import { getMatchMenu } from '@umijs/route-utils';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.png';
 const noMatch = (
   <Result
     status={403}
@@ -42,8 +42,8 @@ const defaultFooterDom = (
     copyright={`${new Date().getFullYear()} 蚂蚁集团体验技术部出品`}
     links={[
       {
-        key: 'Ant Design Pro',
-        title: 'Ant Design Pro',
+        key: '留学梭梭',
+        title: '留学梭梭',
         href: 'https://pro.ant.design',
         blankTarget: true,
       },
@@ -54,8 +54,8 @@ const defaultFooterDom = (
         blankTarget: true,
       },
       {
-        key: 'Ant Design',
-        title: 'Ant Design',
+        key: '留学梭梭',
+        title: '留学梭梭',
         href: 'https://ant.design',
         blankTarget: true,
       },

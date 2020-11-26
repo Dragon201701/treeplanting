@@ -1,5 +1,5 @@
 export default {
-  'menu.main': 'Welcome',
+  'menu.main': '可视化植树界面',
   'menu.more-blocks': 'More Blocks',
   'menu.home': 'Início',
   'menu.login': 'Login',
@@ -22,7 +22,7 @@ export default {
   'menu.form.step-form.result': 'Formulário Assistido(finalizado)',
   'menu.form.advanced-form': 'Formulário Avançado',
   'menu.list': 'Lista',
-  'menu.list.table-list': 'Tabela de Busca',
+  'menu.list.table-list': '树苗列表',
   'menu.list.basic-list': 'Lista Básica',
   'menu.list.card-list': 'Lista de Card',
   'menu.list.search-list': 'Lista de Busca',
