@@ -1,7 +1,8 @@
 import request from 'umi-request';
 import firebase from 'firebase'
 require('firebase/auth')
-import firebaseconfig from '../../../../config/firebase'
+require('firebase/firestore');
+import {Userdb} from '../../../../config/firebase'
 
 export async function fakeRegister(params) {
   return request('/api/register', {
@@ -22,6 +23,24 @@ export async function Register(params){
     currentAuthority = 'user'
   });
   const ret = await registerPromise
+  var user = firebase.auth().currentUser;
+  console.log('Firestore user datebase: ', Userdb)
+  if (status == 'ok'){
+    let dbregisterPromise = Userdb.doc(user.uid).set({
+      name: '',
+      email: user.email,
+      actcodes: [],
+      mytrees: [],
+      type: 'user',
+    })
+    .then(function() {
+      console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+      console.error("Error writing document: ", error);
+    });
+    const ret2 = await dbregisterPromise
+  }
   console.log('Complete firebase Register. ret:', ret, ' Start sending emial verification.')
   var actionCodeSettings = {
     // URL you want to redirect back to. The domain (www.example.com) for this

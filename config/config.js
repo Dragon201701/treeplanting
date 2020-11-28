@@ -6,6 +6,7 @@ import routes from './routes';
 //import firebase from './firebase'
 
 const { REACT_APP_ENV } = process.env;
+
 export default defineConfig({
   hash: true,
   antd: {},

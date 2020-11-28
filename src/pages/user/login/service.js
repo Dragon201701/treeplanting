@@ -2,7 +2,7 @@ import request from 'umi-request';
 
 import firebase from 'firebase'
 require('firebase/auth')
-import firebaseconfig from '../../../../config/firebase'
+import cloud from '../../../../config/firebase'
 import { resolveConfig } from 'prettier';
 import { reject } from 'lodash';
 
