@@ -4,16 +4,14 @@ const Model = {
   state: {
     current: 'info',
     step: {
-      payAccount: 'ant-design@alipay.com',
-      receiverAccount: 'test@example.com',
-      receiverName: 'Alex',
-      amount: '500',
       actcode:'',
-      numtrees:'10'
+      numtrees:'',
+      treename:'',
     },
   },
   effects: {
     *submitStepForm({ payload }, { call, put }) {
+      console.log('submit Step Form: ', payload)
       yield call(fakeSubmitForm, payload);
       yield put({
         type: 'saveStepFormData',

@@ -13,8 +13,12 @@ const UserModel = {
       });
     },
 
-    *fetchCurrent(_, { call, put }) {
+    *fetchCurrent(_, { call, put , select}) {
+      let currentUser = yield select(state => state.user.currentUser)
+      console.log('当前用户：',currentUser)
       const response = yield call(queryCurrent);
+      currentUser = yield select(state => state.user.currentUser)
+      console.log('当前用户：',currentUser)
       yield put({
         type: 'saveCurrentUser',
         payload: response,
