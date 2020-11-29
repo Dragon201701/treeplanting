@@ -1,5 +1,6 @@
 export default {
-  'menu.main': '可视化植树界面',
+  'menu.main': '我的小树',
+  'menu.newtrees':'植树',
   'menu.more-blocks': '更多區塊',
   'menu.home': '首頁',
   'menu.login': '登錄',

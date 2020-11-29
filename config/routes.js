@@ -34,22 +34,6 @@ export default [
       },
     ],
   },
-
-  /*{
-    path: '/',
-    component: '../layouts/BlankLayout',
-    routes: [
-      {
-        path: '/',
-        redirect: './welcome',
-      },
-      {
-        path: '/welcome',
-        name: 'welcome',
-        component: './welcome',
-      }
-    ]
-  },*/
   {
     path: '/',
     component: '../layouts/SecurityLayout',
@@ -84,6 +68,12 @@ export default [
                 authority: ['admin'],
               },
             ],
+          },
+          {
+            path: '/newtrees',
+            name: 'newtrees',
+            icon: 'form',
+            component: './newtrees',
           },
           {
             name: 'list.table-list',

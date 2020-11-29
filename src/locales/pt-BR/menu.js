@@ -1,5 +1,6 @@
 export default {
-  'menu.main': '可视化植树界面',
+  'menu.main': 'My Trees',
+  'menu.newtrees':'New Tree',
   'menu.more-blocks': 'More Blocks',
   'menu.home': 'Início',
   'menu.login': 'Login',

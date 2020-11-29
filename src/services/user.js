@@ -8,7 +8,7 @@ export async function query() {
 }
 export async function queryCurrent() {
   var user = firebase.auth().currentUser;
-  var name, email, photoUrl, uid, emailVerified, type;
+  var name, email, photoUrl, uid, emailVerified, type, actcodes;
 
   if (user != null) {
     name = user.displayName;
@@ -23,6 +23,7 @@ export async function queryCurrent() {
       if (doc.exists) {
         console.log("Document data:", doc.data());
         type = doc.data().type;
+        actcodes = doc.data().actcodes
       } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
@@ -32,10 +33,11 @@ export async function queryCurrent() {
     });
     const ret = await getuserinfoPromise
   }
-  console.log('获取当前用户成功：', {useranme: name, email: email, avatar: photoUrl, userid: uid, type: type})
-  return {useranme: name, email: email, avatar: photoUrl, userid: uid, type: type}
+  console.log('获取当前用户成功：', {useranme: name, email: email, avatar: photoUrl, userid: uid, type: type, actcodes: actcodes})
+  return {useranme: name, email: email, avatar: photoUrl, userid: uid, type: type, actcodes: actcodes}
   
 }
+
 export async function queryNotices() {
   return request('/api/notices');
 }
