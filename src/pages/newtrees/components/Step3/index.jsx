@@ -17,20 +17,20 @@ const Step3 = (props) => {
   const [form] = Form.useForm();
   let avaliabletrees = 0
   const actcodes = props.user.currentUser.actcodes
-  for (let i = 0; i < actcodes.length; i++){
+  /*for (let i = 0; i < actcodes.length; i++){
     if (props.data.actcode == actcodes[i].actcode){
       avaliabletrees = actcodes[i].numtrees
       break
     }
   }
   console.log('Step 2 num tree avaliable: ', avaliabletrees, ' for actcode: ', props.data.actcode)
-  const numtreesavaliable = avaliabletrees
+  const numtreesavaliable = avaliabletrees*/
 
   if (!data) {
     return null;
   }
 
-  const { payAccount, receiverAccount, receiverName, amount } = data;
+  const { actcode, numtrees, treename, numtreesavaliable } = data;
   
   const { validateFields, getFieldsValue } = form;
 
@@ -65,7 +65,7 @@ const Step3 = (props) => {
       });*/
     }
   };
-
+  const treenames = numtrees == 1? treename : treename + '1号到' + numtrees + '号'
   
   return (
     <Form
@@ -87,7 +87,7 @@ const Step3 = (props) => {
           <Descriptions.Item label="选择的捐献树苗数量">
             <Statistic value={props.data.numtrees} suffix="颗" />
           </Descriptions.Item>
-          <Descriptions.Item label="树苗名字"> {props.data.name}</Descriptions.Item>
+          <Descriptions.Item label="树苗名字"> {treenames}</Descriptions.Item>
         </Descriptions>
       </div>
       <Divider

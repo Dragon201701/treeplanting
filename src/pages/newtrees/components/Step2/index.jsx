@@ -35,7 +35,7 @@ const Step2 = (props) => {
       const values = getFieldsValue();
       dispatch({
         type: 'formAndstepForm/saveStepFormData',
-        payload: { ...data, ...values },
+        payload: { ...data, ...values},
       });
       dispatch({
         type: 'formAndstepForm/saveCurrentStep',
@@ -46,6 +46,7 @@ const Step2 = (props) => {
 
   const onValidateForm = async () => {
     const values = await validateFields();
+    values.numtreesavaliable = numtreesavaliable
     console.log('获取本页数据：', values)
     if (dispatch) {
       /*dispatch({
@@ -87,16 +88,7 @@ const Step2 = (props) => {
         style={{
           margin: '24px 0',
         }}
-      />
-      <Alert
-        closable
-        showIcon
-        message="确认后，树苗名字，区域将无法更改。所消耗的数量也将无法退回。"
-        style={{
-          marginBottom: 24,
-        }}
-      />
-      
+      />      
       <Form.Item
           label="树苗数量"
           name="numtrees"
@@ -140,7 +132,7 @@ const Step2 = (props) => {
       </Form.Item>
       <Form.Item
           label="本批树苗名字"
-          name="name"
+          name="treename"
           rules={[
             {
               required: true,

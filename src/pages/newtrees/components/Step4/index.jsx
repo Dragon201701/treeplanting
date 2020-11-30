@@ -10,8 +10,9 @@ const Step3 = (props) => {
     return null;
   }
 
-  const { payAccount, receiverAccount, receiverName, amount } = data;
+  const { actcode, numtrees, treename, numtreesavaliable } = data;
 
+  const treenames = numtrees == 1? treename : treename + '1号到' + numtrees + '号'
   const onFinish = () => {
     if (dispatch) {
       dispatch({
@@ -24,11 +25,14 @@ const Step3 = (props) => {
   const information = (
     <div className={styles.information}>
       <Descriptions column={1}>
-        <Descriptions.Item label="付款账户"> {payAccount}</Descriptions.Item>
-        <Descriptions.Item label="收款账户"> {receiverAccount}</Descriptions.Item>
-        <Descriptions.Item label="收款人姓名"> {receiverName}</Descriptions.Item>
-        <Descriptions.Item label="转账金额">
-          <Statistic value={amount} suffix="元" />
+        <Descriptions.Item label="激活码"> {actcode}</Descriptions.Item>
+        <Descriptions.Item label="当前激活码可捐献数量"> {numtreesavaliable}</Descriptions.Item>
+        <Descriptions.Item label="树苗名称"> {treenames}</Descriptions.Item>
+        <Descriptions.Item label="捐献数量">
+          <Statistic value={numtrees} suffix="颗" />
+        </Descriptions.Item>
+        <Descriptions.Item label="当前激活码剩余可捐献数量">
+          <Statistic value={numtreesavaliable - numtrees} suffix="颗" />
         </Descriptions.Item>
       </Descriptions>
     </div>

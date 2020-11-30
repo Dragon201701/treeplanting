@@ -7,6 +7,7 @@ const Model = {
       actcode:'',
       numtrees:'',
       treename:'',
+      numtreesavaliable:'',
     },
   },
   effects: {
