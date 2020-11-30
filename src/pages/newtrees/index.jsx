@@ -5,6 +5,7 @@ import { connect } from 'umi';
 import Step1 from './components/Step1';
 import Step2 from './components/Step2';
 import Step3 from './components/Step3';
+import Step4 from './components/Step4';
 import styles from './style.less';
 const { Step } = Steps;
 
@@ -18,10 +19,16 @@ const getCurrentStepAndComponent = (current) => {
 
     case 'result':
       return {
+        step: 3,
+        component: <Step4 />,
+      };
+
+    case 'check':
+      return {
         step: 2,
         component: <Step3 />,
       };
-
+      
     case 'info':
     default:
       return {
@@ -47,6 +54,7 @@ const StepForm = ({ current }) => {
             <Step title="请输入激活码" />
             <Step title="填写区域，数量及树苗的名字" />
             <Step title="信息确认" />
+            <Step title="提交成功" />
           </Steps>
           {stepComponent}
         </>

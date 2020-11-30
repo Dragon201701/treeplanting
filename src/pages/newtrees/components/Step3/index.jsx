@@ -1,59 +1,140 @@
-import { Button, Result, Descriptions, Statistic } from 'antd';
+import { Form, Alert, Button, Divider, Result, Descriptions, Statistic } from 'antd';
 import React from 'react';
 import { connect } from 'umi';
 import styles from './index.less';
 
+const formItemLayout = {
+  labelCol: {
+    span: 5,
+  },
+  wrapperCol: {
+    span: 19,
+  },
+};
+
 const Step3 = (props) => {
-  const { data, dispatch } = props;
+  const { data, dispatch, submitting } = props;
+  const [form] = Form.useForm();
+  let avaliabletrees = 0
+  const actcodes = props.user.currentUser.actcodes
+  for (let i = 0; i < actcodes.length; i++){
+    if (props.data.actcode == actcodes[i].actcode){
+      avaliabletrees = actcodes[i].numtrees
+      break
+    }
+  }
+  console.log('Step 2 num tree avaliable: ', avaliabletrees, ' for actcode: ', props.data.actcode)
+  const numtreesavaliable = avaliabletrees
 
   if (!data) {
     return null;
   }
 
   const { payAccount, receiverAccount, receiverName, amount } = data;
+  
+  const { validateFields, getFieldsValue } = form;
 
-  const onFinish = () => {
+  const onPrev = () => {
     if (dispatch) {
+      const values = getFieldsValue();
+      dispatch({
+        type: 'formAndstepForm/saveStepFormData',
+        payload: { ...data, ...values },
+      });
       dispatch({
         type: 'formAndstepForm/saveCurrentStep',
         payload: 'info',
       });
     }
   };
+  const onValidateForm = async () => {
+    const values = await validateFields();
+    console.log('获取本页数据：', values)
+    if (dispatch) {
+      dispatch({
+        type: 'formAndstepForm/submitStepForm',
+        payload: { ...data, ...values },
+      });
+      /*dispatch({
+        type: 'formAndstepForm/saveStepFormData',
+        payload: values,
+      });
+      dispatch({
+        type: 'formAndstepForm/saveCurrentStep',
+        payload: 'check',
+      });*/
+    }
+  };
 
-  const information = (
-    <div className={styles.information}>
-      <Descriptions column={1}>
-        <Descriptions.Item label="付款账户"> {payAccount}</Descriptions.Item>
-        <Descriptions.Item label="收款账户"> {receiverAccount}</Descriptions.Item>
-        <Descriptions.Item label="收款人姓名"> {receiverName}</Descriptions.Item>
-        <Descriptions.Item label="转账金额">
-          <Statistic value={amount} suffix="元" />
-        </Descriptions.Item>
-      </Descriptions>
-    </div>
-  );
-  const extra = (
-    <>
-      <Button type="primary" onClick={onFinish}>
-        再转一笔
-      </Button>
-      <Button>查看账单</Button>
-    </>
-  );
+  
   return (
-    <Result
-      status="success"
-      title="操作成功"
-      subTitle="预计两小时内到账"
-      extra={extra}
-      className={styles.result}
+    <Form
+      {...formItemLayout}
+      form={form}
+      layout="horizontal"
+      className={styles.stepForm}
+      initialValues={{
+        numtrees: '',
+        region: '0',
+      }}
     >
-      {information}
-    </Result>
+      <div className={styles.information}>
+        <Descriptions column={1}>
+          <Descriptions.Item label="当前激活码"> {props.data.actcode}</Descriptions.Item>
+          <Descriptions.Item label="当前激活码可捐献树苗数量">
+            <Statistic value={numtreesavaliable} suffix="颗" />
+          </Descriptions.Item>
+          <Descriptions.Item label="选择的捐献树苗数量">
+            <Statistic value={props.data.numtrees} suffix="颗" />
+          </Descriptions.Item>
+          <Descriptions.Item label="树苗名字"> {props.data.name}</Descriptions.Item>
+        </Descriptions>
+      </div>
+      <Divider
+        style={{
+          margin: '24px 0',
+        }}
+      />
+      <Alert
+        closable
+        showIcon
+        message="确认后，树苗名字，区域将无法更改。所消耗的数量也将无法退回。"
+        style={{
+          marginBottom: 24,
+        }}
+      />
+      <Form.Item
+        style={{
+          marginBottom: 8,
+        }}
+        wrapperCol={{
+          xs: {
+            span: 24,
+            offset: 0,
+          },
+          sm: {
+            span: formItemLayout.wrapperCol.span,
+            offset: formItemLayout.labelCol.span,
+          },
+        }}
+      >
+        <Button
+          onClick={onPrev}
+          style={{
+            marginLeft: 8,
+          }}
+        >
+          返回上一步
+        </Button>
+        <Button type="primary" onClick={onValidateForm} loading={submitting}>
+          确认并提交
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 
-export default connect(({ formAndstepForm }) => ({
+export default connect(({ user, formAndstepForm }) => ({
+  user,
   data: formAndstepForm.step,
 }))(Step3);

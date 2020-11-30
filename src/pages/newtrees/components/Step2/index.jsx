@@ -29,9 +29,7 @@ const Step2 = (props) => {
   if (!data) {
     return null;
   }
-
   const { validateFields, getFieldsValue } = form;
-
   const onPrev = () => {
     if (dispatch) {
       const values = getFieldsValue();
@@ -50,9 +48,17 @@ const Step2 = (props) => {
     const values = await validateFields();
     console.log('获取本页数据：', values)
     if (dispatch) {
-      dispatch({
+      /*dispatch({
         type: 'formAndstepForm/submitStepForm',
         payload: { ...data, ...values },
+      });*/
+      dispatch({
+        type: 'formAndstepForm/saveStepFormData',
+        payload: values,
+      });
+      dispatch({
+        type: 'formAndstepForm/saveCurrentStep',
+        payload: 'check',
       });
     }
   };
