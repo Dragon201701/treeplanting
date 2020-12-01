@@ -1,4 +1,4 @@
-import { fakeSubmitForm } from './service';
+import { SubmitForm } from './service';
 const Model = {
   namespace: 'formAndstepForm',
   state: {
@@ -13,7 +13,7 @@ const Model = {
   effects: {
     *submitStepForm({ payload }, { call, put }) {
       console.log('submit Step Form: ', payload)
-      yield call(fakeSubmitForm, payload);
+      yield call(SubmitForm, payload);
       yield put({
         type: 'saveStepFormData',
         payload,

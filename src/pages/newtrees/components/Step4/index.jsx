@@ -40,16 +40,16 @@ const Step3 = (props) => {
   const extra = (
     <>
       <Button type="primary" onClick={onFinish}>
-        再转一笔
+        再次捐献
       </Button>
-      <Button>查看账单</Button>
+      <Button>返回主页</Button>
     </>
   );
   return (
     <Result
       status="success"
       title="操作成功"
-      subTitle="预计两小时内到账"
+      subTitle="若我的小树页面没更新，请刷新或清除缓存后再次尝试。"
       extra={extra}
       className={styles.result}
     >

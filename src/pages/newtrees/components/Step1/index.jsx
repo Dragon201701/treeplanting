@@ -43,7 +43,8 @@ const Step1 = (props) => {
     var status = false
     //let actcodes = ['test, test']
     let actcodes = props.user.currentUser.actcodes
-    for( var i = 0; i < actcodes.length; i++){
+    console.log('获取到用户激活码：', props.user.currentUser)
+    for( let i = 0; i < actcodes.length; i++){
       if (actcodes[i].actcode == values.actcode) {
         status = true
         break

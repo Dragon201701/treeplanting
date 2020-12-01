@@ -50,10 +50,11 @@ const Step3 = (props) => {
   const onValidateForm = async () => {
     const values = await validateFields();
     console.log('获取本页数据：', values)
+    const user = props.user
     if (dispatch) {
       dispatch({
         type: 'formAndstepForm/submitStepForm',
-        payload: { ...data, ...values },
+        payload: { ...data, ...values, ...user},
       });
       /*dispatch({
         type: 'formAndstepForm/saveStepFormData',
@@ -82,7 +83,7 @@ const Step3 = (props) => {
         <Descriptions column={1}>
           <Descriptions.Item label="当前激活码"> {props.data.actcode}</Descriptions.Item>
           <Descriptions.Item label="当前激活码可捐献树苗数量">
-            <Statistic value={numtreesavaliable} suffix="颗" />
+            <Statistic value={numtreesavaliable} sfuffix="颗" />
           </Descriptions.Item>
           <Descriptions.Item label="选择的捐献树苗数量">
             <Statistic value={props.data.numtrees} suffix="颗" />
