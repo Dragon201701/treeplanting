@@ -112,7 +112,8 @@ class CardList extends Component {
   }
 }
 
-export default connect(({ listAndcardList, loading }) => ({
+export default connect(({ user, listAndcardList, loading }) => ({
+  user,
   listAndcardList,
   loading: loading.models.listAndcardList,
 }))(CardList);
