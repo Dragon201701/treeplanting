@@ -51,7 +51,7 @@ export default [
             path: '/main',
             name: 'main',
             icon: 'smile',
-            component: './main',
+            component: './mytrees',
           },
           {
             path: '/admin',
@@ -59,7 +59,7 @@ export default [
             icon: 'crown',
             component: './Admin',
             authority: ['admin'],
-            routes: [
+            /*routes: [
               {
                 path: '/admin/sub-page',
                 name: 'sub-page',
@@ -67,19 +67,13 @@ export default [
                 component: './main',
                 authority: ['admin'],
               },
-            ],
+            ],*/
           },
           {
             path: '/newtrees',
             name: 'newtrees',
             icon: 'form',
             component: './newtrees',
-          },
-          {
-            name: 'list.table-list',
-            icon: 'table',
-            path: '/list',
-            component: './ListTableList',
           },
           {
             component: './404',
