@@ -1,12 +1,12 @@
-import { queryFakeList } from './service';
+import { queryFakeList, queryAllTrees } from './service';
 const Model = {
-  namespace: 'listAndcardList',
+  namespace: 'mytrees',
   state: {
-    list: [],
+    treelist: [],
   },
   effects: {
     *fetch({ payload }, { call, put }) {
-      const response = yield call(queryFakeList, payload);
+      const response = yield call(queryAllTrees, payload);
       yield put({
         type: 'queryList',
         payload: Array.isArray(response) ? response : [],
@@ -15,7 +15,7 @@ const Model = {
   },
   reducers: {
     queryList(state, action) {
-      return { ...state, list: action.payload };
+      return { ...state, treelist: action.payload };
     },
   },
 };
