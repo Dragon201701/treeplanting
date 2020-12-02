@@ -10,7 +10,6 @@ export async function queryFakeList(params) {
 export async function queryAllTrees(params) {
   const treeIDs = params.currentuser.mytrees
   var mytrees = []
-  console.log('Query all trees: ', treeIDs)
   for (var i = 0; i < treeIDs.length; i++){
     let gettreePromise = Treedb.doc(treeIDs[i]).get().then(function(doc) {
       if (doc.exists) {

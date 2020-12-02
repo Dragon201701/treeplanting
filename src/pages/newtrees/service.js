@@ -3,6 +3,7 @@ import firebase from 'firebase'
 require('firebase/auth')
 import {Userdb, Treedb} from '../../../config/firebase'
 import { Tree } from 'antd';
+import { update } from 'lodash';
 
 export async function fakeSubmitForm(params) {
   console.log('Fake submit form: ', params,)
@@ -22,7 +23,7 @@ export async function SubmitForm(params){
     numtrees: Number(params.numtrees),
     owner: params.currentUser.userid,
   }).then(function(docRef){
-    console.log("Document written with ID: ", docRef.id);
+    //console.log("Document written with ID: ", docRef.id);
     treeid = docRef.id
   }).catch(function(error){
     console.error("Error adding document: ", error);
@@ -35,7 +36,7 @@ export async function SubmitForm(params){
   var actcode = params.actcode
   console.log('User actcode: ', actcode)
   for(let i = 0; i < actcodes.length; i++){
-    console.log('Loop through actcode ', i, ' :', actcodes[i], ' equals: ', actcodes[i].actcode == actcode)
+    //console.log('Loop through actcode ', i, ' :', actcodes[i], ' equals: ', actcodes[i].actcode == actcode)
     if(actcodes[i].actcode == actcode){
       let numtreesavailable = actcodes[i].numtrees;
       if(numtreesavailable == params.numtrees){
@@ -48,7 +49,7 @@ export async function SubmitForm(params){
       }
     }
   }
-  console.log('New actcodes: ', actcodes)
+  //console.log('New actcodes: ', actcodes)
   var mytrees = params.currentUser.mytrees
   mytrees.push(treeid)
   console.log('New my trees: ', mytrees)
@@ -57,16 +58,13 @@ export async function SubmitForm(params){
     actcodes: actcodes,
     mytrees: mytrees
   }).then(function() {
-    console.log("Document successfully updated!");
+    //console.log("Document successfully updated!");
   })
   .catch(function(error) {
     // The document probably doesn't exist.
     console.error("Error updating document: ", error);
   });
-
-
-
-
+  let ret = await updateusertreesPromise
 
   return {message: 'Ok'}
 }
